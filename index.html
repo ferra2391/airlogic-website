@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Airlogic - Home</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airlogic</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
+    <div class="logo"><img src="assets/logo-default.png" alt="Airlogic Logo" /></div>
     <nav>
-      <div class="logo">
-        <img src="assets/logo.png" alt="Airlogic Logo">
-      </div>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="chi-siamo.html">Chi siamo</a></li>
-        <li><a href="servizi.html">Servizi</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#chi-siamo">Chi Siamo</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contatti">Contatti</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Benvenuto in Airlogic</h1>
-      <p>Soluzioni innovative per il tuo business</p>
-    </section>
-    <section class="intro">
-      <h2>La nostra azienda</h2>
-      <p>Riprenderemo qui i testi del sito attuale.</p>
-      <a href="chi-siamo.html" class="button">Scopri di più</a>
-    </section>
-  </main>
+  <section id="home" class="hero fade-in">
+    <h1>Benvenuti in Airlogic</h1>
+    <p>Soluzioni impiantistiche avanzate</p>
+  </section>
+
+  <section id="chi-siamo">
+    <h2>Chi Siamo</h2>
+    <p>Airlogic è una società specializzata nella progettazione e realizzazione di impianti...</p>
+  </section>
+
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="grid">
+      <div class="project fade-in">Progetto 1</div>
+      <div class="project fade-in">Progetto 2</div>
+      <div class="project fade-in">Progetto 3</div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <h2>Contattaci</h2>
+    <p>Email: <a href="mailto:info@airlogic.it">info@airlogic.it</a></p>
+  </section>
 
   <footer>
-    <p>&copy; 2025 Airlogic. Tutti i diritti riservati.</p>
+    <p>&copy; 2025 Airlogic s.r.l.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
