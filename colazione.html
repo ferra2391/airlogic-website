@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>B&B Breakfast Order</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --cream: #fff7ec;
-      --cream-2: #ffe9cf;
+      --cream: #fff8ef;
+      --cream2: #ffe5c7;
       --brown: #6b3f25;
-      --brown-dark: #3b2114;
+      --brownDark: #321a0e;
       --gold: #d7a85b;
-      --rose: #f7b7a3;
-      --green: #91b88c;
+      --green: #7fa879;
+      --red: #c45c45;
       --white: #ffffff;
-      --shadow: 0 20px 55px rgba(80, 45, 20, 0.22);
+      --glass: rgba(255,255,255,0.76);
+      --shadow: 0 22px 60px rgba(80, 45, 20, 0.22);
       --radius: 28px;
     }
 
@@ -28,60 +30,61 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: 'Poppins', sans-serif;
-      color: var(--brown-dark);
+      font-family: "Poppins", sans-serif;
+      color: var(--brownDark);
       background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.85), transparent 28%),
-        radial-gradient(circle at 85% 5%, rgba(247,183,163,0.55), transparent 24%),
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.95), transparent 24%),
+        radial-gradient(circle at 85% 0%, rgba(247,183,163,0.58), transparent 25%),
+        radial-gradient(circle at 90% 90%, rgba(145,184,140,0.35), transparent 25%),
         linear-gradient(145deg, #fff8ef 0%, #ffe3c2 48%, #f8c9ad 100%);
       overflow-x: hidden;
     }
 
-    .background-orb {
+    .orb {
       position: fixed;
       border-radius: 999px;
-      filter: blur(2px);
-      opacity: 0.55;
-      z-index: 0;
       pointer-events: none;
+      z-index: 0;
+      filter: blur(3px);
+      opacity: 0.48;
     }
 
-    .orb-1 {
+    .orb.one {
       width: 260px;
       height: 260px;
-      background: rgba(215,168,91,0.35);
-      top: -70px;
-      left: -70px;
+      left: -90px;
+      top: -80px;
+      background: rgba(215,168,91,0.42);
     }
 
-    .orb-2 {
-      width: 220px;
-      height: 220px;
-      background: rgba(145,184,140,0.35);
-      bottom: -60px;
-      right: -50px;
+    .orb.two {
+      width: 250px;
+      height: 250px;
+      right: -90px;
+      bottom: -80px;
+      background: rgba(145,184,140,0.42);
     }
 
     .page {
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 520px;
+      max-width: 540px;
       margin: 0 auto;
-      padding: 26px 18px 34px;
+      padding: 26px 18px 36px;
     }
 
     .hero {
       position: relative;
+      min-height: 265px;
       overflow: hidden;
-      border-radius: 36px;
+      border-radius: 38px;
       padding: 30px 24px 26px;
       background:
-        linear-gradient(160deg, rgba(255,255,255,0.82), rgba(255,246,233,0.55)),
+        linear-gradient(160deg, rgba(255,255,255,0.72), rgba(255,246,233,0.35)),
         url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80");
       background-size: cover;
       background-position: center;
-      min-height: 250px;
       box-shadow: var(--shadow);
       color: white;
     }
@@ -90,7 +93,8 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(160deg, rgba(59,33,20,0.78), rgba(107,63,37,0.38), rgba(255,255,255,0.08));
+      background:
+        linear-gradient(155deg, rgba(47,24,12,0.85), rgba(91,52,30,0.52), rgba(255,255,255,0.08));
       z-index: 0;
     }
 
@@ -100,89 +104,122 @@
     }
 
     .logo {
-      width: 82px;
-      height: 82px;
-      border-radius: 26px;
-      background: rgba(255,255,255,0.92);
+      width: 84px;
+      height: 84px;
+      border-radius: 27px;
+      background: rgba(255,255,255,0.94);
       color: var(--brown);
       display: grid;
       place-items: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 31px;
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
       font-weight: 700;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.2);
       margin-bottom: 18px;
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       padding: 8px 13px;
       border-radius: 999px;
       background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 13px;
     }
 
     h1 {
       margin: 0;
-      font-family: 'Playfair Display', serif;
-      font-size: 38px;
+      font-family: "Playfair Display", serif;
+      font-size: 39px;
       line-height: 1;
       letter-spacing: -0.8px;
     }
 
     .subtitle {
-      margin: 12px 0 0;
+      margin: 13px 0 0;
       font-size: 14px;
-      line-height: 1.5;
-      max-width: 330px;
+      line-height: 1.55;
+      max-width: 350px;
       opacity: 0.95;
     }
 
     .room-card {
-      margin-top: -28px;
+      margin-top: -30px;
       position: relative;
       z-index: 3;
       background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.65);
-      border-radius: 26px;
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 28px;
       padding: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 16px 40px rgba(72,39,18,0.16);
+      box-shadow: 0 16px 42px rgba(72,39,18,0.16);
     }
 
     .room-label {
-      font-size: 12px;
-      color: rgba(59,33,20,0.62);
-      font-weight: 600;
+      font-size: 11px;
+      color: rgba(50,26,14,0.58);
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.9px;
     }
 
     .room-number {
-      font-size: 25px;
-      font-weight: 800;
-      color: var(--brown-dark);
-      margin-top: 2px;
+      font-size: 26px;
+      font-weight: 900;
+      margin-top: 3px;
     }
 
     .room-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 21px;
       background: linear-gradient(145deg, var(--gold), #f1d08c);
       display: grid;
       place-items: center;
-      font-size: 25px;
-      box-shadow: 0 10px 25px rgba(215,168,91,0.35);
+      font-size: 26px;
+      box-shadow: 0 10px 26px rgba(215,168,91,0.36);
+    }
+
+    .status-box {
+      display: none;
+      margin-top: 16px;
+      padding: 15px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.78);
+      box-shadow: 0 12px 32px rgba(84,47,21,0.10);
+      border: 1px solid rgba(255,255,255,0.75);
+    }
+
+    .status-box.show {
+      display: block;
+    }
+
+    .status-title {
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .countdown {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--brown);
+      letter-spacing: -0.5px;
+    }
+
+    .status-note {
+      margin-top: 5px;
+      font-size: 12px;
+      color: rgba(50,26,14,0.58);
+      line-height: 1.45;
     }
 
     .section-title {
@@ -190,19 +227,20 @@
       display: flex;
       justify-content: space-between;
       align-items: end;
+      gap: 10px;
     }
 
     .section-title h2 {
       margin: 0;
-      font-family: 'Playfair Display', serif;
-      font-size: 27px;
-      color: var(--brown-dark);
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
     }
 
     .section-title span {
       font-size: 12px;
-      color: rgba(59,33,20,0.6);
-      font-weight: 600;
+      color: rgba(50,26,14,0.58);
+      font-weight: 700;
+      text-align: right;
     }
 
     .foods {
@@ -221,33 +259,33 @@
 
     .food-content {
       cursor: pointer;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.74);
-      border: 1px solid rgba(255,255,255,0.75);
+      border-radius: 25px;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.78);
       padding: 15px;
       display: flex;
       gap: 14px;
       align-items: center;
-      box-shadow: 0 12px 30px rgba(84,47,21,0.10);
+      box-shadow: 0 12px 31px rgba(84,47,21,0.10);
       transition: 0.22s ease;
     }
 
     .food-content:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 35px rgba(84,47,21,0.15);
+      box-shadow: 0 16px 36px rgba(84,47,21,0.15);
     }
 
     .food-card input:checked + .food-content {
-      background: linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,244,224,0.96));
+      background: linear-gradient(145deg, rgba(255,255,255,0.97), rgba(255,244,224,0.96));
       border: 2px solid var(--gold);
-      transform: scale(1.015);
+      transform: scale(1.012);
     }
 
     .emoji {
-      width: 58px;
-      height: 58px;
-      min-width: 58px;
-      border-radius: 22px;
+      width: 59px;
+      height: 59px;
+      min-width: 59px;
+      border-radius: 23px;
       display: grid;
       place-items: center;
       font-size: 30px;
@@ -255,22 +293,22 @@
     }
 
     .food-title {
-      font-weight: 800;
+      font-weight: 900;
       font-size: 15px;
-      color: var(--brown-dark);
       margin-bottom: 3px;
     }
 
     .food-desc {
       font-size: 12px;
       line-height: 1.4;
-      color: rgba(59,33,20,0.63);
+      color: rgba(50,26,14,0.62);
     }
 
     .check {
       margin-left: auto;
-      width: 26px;
-      height: 26px;
+      width: 27px;
+      height: 27px;
+      min-width: 27px;
       border-radius: 999px;
       border: 2px solid rgba(107,63,37,0.18);
       display: grid;
@@ -285,70 +323,104 @@
       border-color: var(--green);
     }
 
-    .notes {
-      margin-top: 16px;
-    }
-
     textarea {
+      margin-top: 16px;
       width: 100%;
-      min-height: 92px;
+      min-height: 96px;
       resize: none;
       border: 0;
       outline: none;
-      border-radius: 24px;
+      border-radius: 25px;
       padding: 16px;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       font-size: 14px;
-      background: rgba(255,255,255,0.78);
-      box-shadow: 0 12px 30px rgba(84,47,21,0.10);
-      color: var(--brown-dark);
+      background: rgba(255,255,255,0.80);
+      box-shadow: 0 12px 31px rgba(84,47,21,0.10);
+      color: var(--brownDark);
     }
 
     textarea::placeholder {
-      color: rgba(59,33,20,0.45);
+      color: rgba(50,26,14,0.43);
     }
 
-    .send-btn {
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
       margin-top: 18px;
+    }
+
+    button {
       width: 100%;
       border: none;
-      border-radius: 24px;
-      padding: 18px 20px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      font-weight: 800;
-      color: white;
-      background: linear-gradient(135deg, var(--brown-dark), var(--brown), var(--gold));
-      box-shadow: 0 18px 38px rgba(74,39,18,0.32);
+      border-radius: 25px;
+      padding: 17px 20px;
+      font-family: "Poppins", sans-serif;
+      font-size: 15px;
+      font-weight: 900;
       cursor: pointer;
       transition: 0.22s ease;
     }
 
-    .send-btn:active {
-      transform: scale(0.98);
+    button:active {
+      transform: scale(0.985);
+    }
+
+    .send-btn {
+      color: white;
+      background: linear-gradient(135deg, var(--brownDark), var(--brown), var(--gold));
+      box-shadow: 0 18px 39px rgba(74,39,18,0.32);
+    }
+
+    .edit-btn {
+      display: none;
+      color: var(--brownDark);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.80);
+      box-shadow: 0 12px 30px rgba(84,47,21,0.12);
+    }
+
+    .edit-btn.show {
+      display: block;
+    }
+
+    .small-note {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.45;
+      color: rgba(50,26,14,0.58);
+    }
+
+    .loader {
+      margin: 22px 0;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(50,26,14,0.62);
+      font-weight: 700;
     }
 
     .footer {
-      margin-top: 18px;
+      margin-top: 19px;
       text-align: center;
       font-size: 12px;
-      color: rgba(59,33,20,0.55);
+      color: rgba(50,26,14,0.55);
     }
 
     .toast {
       position: fixed;
       left: 50%;
       bottom: 22px;
-      transform: translateX(-50%) translateY(120px);
+      transform: translateX(-50%) translateY(130px);
       width: calc(100% - 34px);
-      max-width: 470px;
+      max-width: 480px;
       padding: 16px 18px;
-      border-radius: 22px;
-      background: rgba(59,33,20,0.95);
+      border-radius: 23px;
+      background: rgba(50,26,14,0.96);
       color: white;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.24);
       font-size: 14px;
-      z-index: 20;
+      z-index: 30;
       transition: 0.3s ease;
       text-align: center;
     }
@@ -370,17 +442,18 @@
 </head>
 
 <body>
-  <div class="background-orb orb-1"></div>
-  <div class="background-orb orb-2"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
 
   <main class="page">
+
     <section class="hero">
       <div class="hero-content">
         <div class="logo">B&B</div>
         <div class="tag">☕ Colazione in camera</div>
         <h1>Buongiorno,<br>scegli la tua colazione</h1>
         <p class="subtitle">
-          Seleziona cosa desideri ricevere domani mattina. Il tuo ordine sarà inviato direttamente alla reception.
+          Seleziona cosa desideri ricevere. Il tuo ordine sarà inviato direttamente alla reception.
         </p>
       </div>
     </section>
@@ -393,85 +466,37 @@
       <div class="room-icon">🛎️</div>
     </section>
 
+    <section class="status-box" id="statusBox">
+      <div class="status-title">Ordine ancora modificabile</div>
+      <div class="countdown" id="countdown">10:00</div>
+      <div class="status-note">
+        Puoi modificare l’ordine entro 10 minuti dall’invio. Dopo questo tempo sarà considerato confermato.
+      </div>
+    </section>
+
     <div class="section-title">
       <h2>Menù breakfast</h2>
       <span>Scegli una o più voci</span>
     </div>
 
     <form id="breakfastForm">
-      <div class="foods">
+      <div id="loader" class="loader">Caricamento menù...</div>
+      <div class="foods" id="foods"></div>
 
-        <label class="food-card">
-          <input type="checkbox" name="food" value="Cappuccino e cornetto">
-          <div class="food-content">
-            <div class="emoji">🥐</div>
-            <div>
-              <div class="food-title">Cappuccino e cornetto</div>
-              <div class="food-desc">Classico italiano, semplice e perfetto.</div>
-            </div>
-            <div class="check">✓</div>
-          </div>
-        </label>
+      <textarea id="notes" placeholder="Note o richieste particolari... es. senza lattosio, orario preferito, allergie"></textarea>
 
-        <label class="food-card">
-          <input type="checkbox" name="food" value="Colazione dolce completa">
-          <div class="food-content">
-            <div class="emoji">🍰</div>
-            <div>
-              <div class="food-title">Colazione dolce completa</div>
-              <div class="food-desc">Dolci, marmellata, burro, succo e caffè.</div>
-            </div>
-            <div class="check">✓</div>
-          </div>
-        </label>
-
-        <label class="food-card">
-          <input type="checkbox" name="food" value="Toast salato">
-          <div class="food-content">
-            <div class="emoji">🥪</div>
-            <div>
-              <div class="food-title">Toast salato</div>
-              <div class="food-desc">Toast caldo con prosciutto e formaggio.</div>
-            </div>
-            <div class="check">✓</div>
-          </div>
-        </label>
-
-        <label class="food-card">
-          <input type="checkbox" name="food" value="Yogurt, frutta e cereali">
-          <div class="food-content">
-            <div class="emoji">🍓</div>
-            <div>
-              <div class="food-title">Yogurt, frutta e cereali</div>
-              <div class="food-desc">Fresco, leggero e colorato.</div>
-            </div>
-            <div class="check">✓</div>
-          </div>
-        </label>
-
-        <label class="food-card">
-          <input type="checkbox" name="food" value="Pancake con miele">
-          <div class="food-content">
-            <div class="emoji">🥞</div>
-            <div>
-              <div class="food-title">Pancake con miele</div>
-              <div class="food-desc">Soffice, caldo, con miele o crema.</div>
-            </div>
-            <div class="check">✓</div>
-          </div>
-        </label>
-
+      <div class="actions">
+        <button class="send-btn" id="sendBtn" type="submit">Invia ordine colazione ✨</button>
+        <button class="edit-btn" id="editBtn" type="button">Modifica ordine</button>
       </div>
 
-      <div class="notes">
-        <textarea id="notes" placeholder="Note o richieste particolari... es. senza lattosio, orario preferito, allergie"></textarea>
+      <div class="small-note">
+        L’ordine può essere modificato entro 10 minuti dall’invio.
       </div>
-
-      <button class="send-btn" type="submit">Invia ordine colazione ✨</button>
     </form>
 
     <div class="footer">
-      B&B Demo Luxury Breakfast · Interfaccia V1
+      B&B Breakfast · Interfaccia V2
     </div>
   </main>
 
@@ -479,68 +504,281 @@
 
   <script>
     const CONFIG = {
-      emailDestinatario: "tuaemail@example.com",
+      webAppUrl: "INCOLLA_QUI_LINK_APPS_SCRIPT",
       nomeBB: "B&B Demo Luxury"
     };
 
-    function getRoomFromUrl() {
+    const state = {
+      room: null,
+      key: null,
+      menu: [],
+      ordineAperto: null,
+      countdownInterval: null
+    };
+
+    const els = {
+      roomNumber: document.getElementById("roomNumber"),
+      foods: document.getElementById("foods"),
+      loader: document.getElementById("loader"),
+      notes: document.getElementById("notes"),
+      form: document.getElementById("breakfastForm"),
+      sendBtn: document.getElementById("sendBtn"),
+      editBtn: document.getElementById("editBtn"),
+      toast: document.getElementById("toast"),
+      statusBox: document.getElementById("statusBox"),
+      countdown: document.getElementById("countdown")
+    };
+
+    init();
+
+    async function init() {
       const params = new URLSearchParams(window.location.search);
-      return params.get("room") || params.get("camera") || "NON RILEVATA";
+
+      state.room = params.get("room") || params.get("camera") || "";
+      state.key = params.get("key") || "";
+
+      els.roomNumber.textContent = state.room ? "Camera " + state.room : "Camera non rilevata";
+
+      if (!state.room || !state.key) {
+        showToast("QR non valido: camera o codice mancanti.");
+      }
+
+      await loadMenu();
+      await checkOrdineAperto();
     }
 
-    const room = getRoomFromUrl();
-    document.getElementById("roomNumber").textContent = "Camera " + room;
+    async function loadMenu() {
+      try {
+        const url = CONFIG.webAppUrl + "?action=menu";
+        const res = await fetch(url);
+        const data = await res.json();
 
-    function showToast(message) {
-      const toast = document.getElementById("toast");
-      toast.textContent = message;
-      toast.classList.add("show");
+        if (!data.ok) throw new Error(data.error || "Errore caricamento menù");
 
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 3200);
+        state.menu = data.menu || [];
+        renderMenu(state.menu);
+
+      } catch (err) {
+        els.loader.textContent = "Errore caricamento menù.";
+        showToast(err.message);
+      }
     }
 
-    document.getElementById("breakfastForm").addEventListener("submit", function(e) {
+    function renderMenu(menu) {
+      els.loader.style.display = "none";
+      els.foods.innerHTML = "";
+
+      if (!menu.length) {
+        els.foods.innerHTML = "<div class='loader'>Nessun prodotto disponibile.</div>";
+        return;
+      }
+
+      menu.forEach((item, index) => {
+        const id = "food_" + index;
+
+        const label = document.createElement("label");
+        label.className = "food-card";
+
+        label.innerHTML = `
+          <input type="checkbox" name="food" id="${id}" value="${escapeHtml(item.nome)}">
+          <div class="food-content">
+            <div class="emoji">${escapeHtml(item.emoji || "🍽️")}</div>
+            <div>
+              <div class="food-title">${escapeHtml(item.nome)}</div>
+              <div class="food-desc">${escapeHtml(item.descrizione || "")}</div>
+            </div>
+            <div class="check">✓</div>
+          </div>
+        `;
+
+        els.foods.appendChild(label);
+      });
+    }
+
+    async function checkOrdineAperto() {
+      if (!state.room || !state.key) return;
+
+      try {
+        const url =
+          CONFIG.webAppUrl +
+          "?action=ordineAperto" +
+          "&camera=" + encodeURIComponent(state.room) +
+          "&key=" + encodeURIComponent(state.key);
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.ok) {
+          showToast(data.error || "QR non autorizzato.");
+          return;
+        }
+
+        if (data.ordine) {
+          state.ordineAperto = data.ordine;
+          applyOrdineToForm(data.ordine);
+          startCountdown(data.ordine.secondiRimanenti);
+          setEditMode(true);
+        }
+
+      } catch (err) {
+        showToast("Impossibile controllare ordini aperti.");
+      }
+    }
+
+    function applyOrdineToForm(ordine) {
+      const prodotti = ordine.prodotti || [];
+
+      document.querySelectorAll('input[name="food"]').forEach(input => {
+        input.checked = prodotti.includes(input.value);
+      });
+
+      els.notes.value = ordine.note || "";
+    }
+
+    function setEditMode(active) {
+      if (active) {
+        els.statusBox.classList.add("show");
+        els.editBtn.classList.add("show");
+        els.sendBtn.textContent = "Invia nuovo ordine";
+      } else {
+        els.statusBox.classList.remove("show");
+        els.editBtn.classList.remove("show");
+        els.sendBtn.textContent = "Invia ordine colazione ✨";
+      }
+    }
+
+    function startCountdown(seconds) {
+      clearInterval(state.countdownInterval);
+
+      let remaining = Math.max(0, Number(seconds || 0));
+
+      updateCountdownText(remaining);
+
+      state.countdownInterval = setInterval(() => {
+        remaining--;
+
+        if (remaining <= 0) {
+          clearInterval(state.countdownInterval);
+          state.ordineAperto = null;
+          setEditMode(false);
+          updateCountdownText(0);
+          showToast("Tempo di modifica scaduto.");
+          return;
+        }
+
+        updateCountdownText(remaining);
+      }, 1000);
+    }
+
+    function updateCountdownText(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      els.countdown.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    }
+
+    els.form.addEventListener("submit", async function(e) {
       e.preventDefault();
 
-      const selectedFoods = Array.from(document.querySelectorAll('input[name="food"]:checked'))
+      if (state.ordineAperto) {
+        showToast("Hai già un ordine aperto. Usa il pulsante Modifica ordine.");
+        return;
+      }
+
+      await sendOrder("creaOrdine");
+    });
+
+    els.editBtn.addEventListener("click", async function() {
+      if (!state.ordineAperto) {
+        showToast("Nessun ordine modificabile trovato.");
+        return;
+      }
+
+      await sendOrder("modificaOrdine");
+    });
+
+    async function sendOrder(action) {
+      const prodotti = Array.from(document.querySelectorAll('input[name="food"]:checked'))
         .map(input => input.value);
 
-      const notes = document.getElementById("notes").value.trim();
+      const note = els.notes.value.trim();
 
-      if (selectedFoods.length === 0) {
+      if (!state.room || !state.key) {
+        showToast("QR non valido: camera o codice mancanti.");
+        return;
+      }
+
+      if (!prodotti.length) {
         showToast("Seleziona almeno una voce per la colazione.");
         return;
       }
 
-      const subject = `Ordine colazione - Camera ${room}`;
+      const payload = {
+        action,
+        camera: state.room,
+        key: state.key,
+        prodotti,
+        note
+      };
 
-      const body =
-`Nuovo ordine colazione
+      if (action === "modificaOrdine") {
+        payload.orderId = state.ordineAperto.orderId;
+      }
 
-B&B: ${CONFIG.nomeBB}
-Camera: ${room}
+      try {
+        setButtonsDisabled(true);
 
-Cibi scelti:
-- ${selectedFoods.join("\n- ")}
+        const res = await fetch(CONFIG.webAppUrl, {
+          method: "POST",
+          body: JSON.stringify(payload)
+        });
 
-Note:
-${notes || "Nessuna nota"}
+        const data = await res.json();
 
-Ordine inviato da QR code camera ${room}.`;
+        if (!data.ok) {
+          showToast(data.error || "Errore invio ordine.");
+          return;
+        }
 
-      const mailto =
-        `mailto:${CONFIG.emailDestinatario}` +
-        `?subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeURIComponent(body)}`;
+        if (data.ordine) {
+          state.ordineAperto = data.ordine;
+          startCountdown(data.ordine.secondiRimanenti);
+          setEditMode(true);
+        }
 
-      showToast("Ordine preparato. Si aprirà l'email di invio.");
+        showToast(data.message || "Operazione completata.");
+
+      } catch (err) {
+        showToast("Errore di collegamento. Riprova.");
+      } finally {
+        setButtonsDisabled(false);
+      }
+    }
+
+    function setButtonsDisabled(disabled) {
+      els.sendBtn.disabled = disabled;
+      els.editBtn.disabled = disabled;
+
+      els.sendBtn.style.opacity = disabled ? "0.65" : "1";
+      els.editBtn.style.opacity = disabled ? "0.65" : "1";
+    }
+
+    function showToast(message) {
+      els.toast.textContent = message;
+      els.toast.classList.add("show");
 
       setTimeout(() => {
-        window.location.href = mailto;
-      }, 650);
-    });
+        els.toast.classList.remove("show");
+      }, 3200);
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
   </script>
 </body>
 </html>
